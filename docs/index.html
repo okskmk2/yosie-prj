@@ -10,6 +10,8 @@
     <h1>yosie</h1>
     <span>cheating count: </span><span id="count"></span>
     <hr>
+    <video id="video" width="640" height="480" autoplay></video>
+    <hr>
     <h2>cheat timelog</h2>
     <ul id="cheatlog">
     </ul>
@@ -27,6 +29,23 @@
             cheatlogEl.appendChild(log);
         }
     });
+    // 비디오 요소를 가져옵니다.
+    const video = document.getElementById('video');
+
+    // 미디어 스트림을 얻기 위한 옵션 설정
+    const constraints = {
+        video: true // 오디오를 포함하고 싶다면, { video: true, audio: true }로 설정
+    };
+
+    // 사용자의 미디어 장치에 접근합니다.
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then((stream) => {
+            // 스트림을 비디오 요소에 설정합니다.
+            video.srcObject = stream;
+        })
+        .catch((err) => {
+            console.error('Error accessing media devices.', err);
+        });
 </script>
 
 </html>
