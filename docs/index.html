@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        img {
+            width: 160px;
+            height: 120px;
+        }
+    </style>
 </head>
 
 <body>
@@ -11,6 +26,7 @@
     <span>cheating count: </span><span id="count"></span>
     <hr>
     <video id="video" width="640" height="480" autoplay></video>
+    <ul id="snapshots"></ul>
     <hr>
     <h2>cheat timelog</h2>
     <ul id="cheatlog">
@@ -31,6 +47,7 @@
     });
     // 비디오 요소를 가져옵니다.
     const video = document.getElementById('video');
+    const snapshots = document.getElementById('snapshots');
 
     // 미디어 스트림을 얻기 위한 옵션 설정
     const constraints = {
@@ -46,6 +63,34 @@
         .catch((err) => {
             console.error('Error accessing media devices.', err);
         });
+
+    // 10초마다 사진을 찍어 <ul>에 추가하는 함수
+    function takeSnapshot() {
+        // 캔버스 요소를 생성합니다.
+        const canvas = document.createElement('canvas');
+        canvas.width = 640;
+        canvas.height = 480;
+        const context = canvas.getContext('2d');
+
+        // 캔버스에 비디오 프레임을 그립니다.
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // 이미지 데이터 URL을 얻습니다.
+        const imgDataUrl = canvas.toDataURL('image/png');
+
+        // 새로운 <li>와 <img> 요소를 생성하여 <ul>에 추가합니다.
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        img.src = imgDataUrl;
+        li.appendChild(img);
+        const timeAt = document.createElement('div');
+        timeAt.innerHTML = new Date().toLocaleString();
+        li.appendChild(timeAt);
+        snapshots.appendChild(li);
+    }
+
+    // 10초마다 takeSnapshot 함수를 호출합니다.
+    setInterval(takeSnapshot, 5000);
 </script>
 
 </html>
