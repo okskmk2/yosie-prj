@@ -9,14 +9,22 @@
 <body>
     <h1>yosie</h1>
     <span>cheating count: </span><span id="count"></span>
+    <hr>
+    <h2>cheat timelog</h2>
+    <ul id="cheatlog">
+    </ul>
 </body>
 <script>
     const countEl = document.getElementById('count');
+    const cheatlogEl = document.getElementById('cheatlog');
     let count = 0;
     document.addEventListener('visibilitychange', function () {
         if (document.visibilityState === 'hidden') {
             alert('You are looking somewhere else.');
             countEl.innerHTML = ++count;
+            let log = document.createElement('li');
+            log.innerHTML = new Date().toLocaleString();
+            cheatlogEl.appendChild(log);
         }
     });
 </script>
