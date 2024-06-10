@@ -1,10 +1,24 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>yosie</h1>
+    <span>cheating count: </span><span id="count"></span>
 </body>
+<script>
+    const countEl = document.getElementById('count');
+    let count = 0;
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') {
+            alert('You are looking somewhere else.');
+            countEl.innerHTML = ++count;
+        }
+    });
+</script>
+
 </html>
