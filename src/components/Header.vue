@@ -55,7 +55,7 @@
   gap: 10px;
   align-items: center;
   padding: 8px;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 .menu-item:hover {

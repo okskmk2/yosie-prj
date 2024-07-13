@@ -14,3 +14,12 @@ nav a {
     text-decoration: none;
     color: inherit;
 }
+
+/* utils */
+
+.container {
+    width: 80rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    margin: 0 auto;
+}
