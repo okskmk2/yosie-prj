@@ -9,7 +9,7 @@
                     offering a secure, efficient, and flexible exam experience anytime, anywhere
                 </div>
                 <div class="btns">
-                    <button class="btn mulai">Mulai</button>
+                    <button class="btn mulai" @click="$router.push('/start')">Mulai</button>
                     <button class="btn tata">Tata tertib</button>
                 </div>
             </div>
@@ -60,6 +60,11 @@
 
 .mulai {
     background-color: #00B2FF;
+    transition: background-color 500ms ease;
+}
+
+.mulai:hover {
+    background-color: #40c6ff;
 }
 
 .tata {
