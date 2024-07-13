@@ -10,8 +10,8 @@
       </div>
       <nav>
         <div class="menus">
-          <router-link class="menu-item"><img src="../assets/petugas.svg" alt=""><span>PETUGAS</span></router-link>
-          <router-link class="menu-item"><img src="../assets/PJLUO.svg" alt=""><span>PJLUO</span></router-link>
+          <router-link class="menu-item" to="/"><img src="../assets/petugas.svg" alt=""><span>PETUGAS</span></router-link>
+          <router-link class="menu-item" to="/"><img src="../assets/PJLUO.svg" alt=""><span>PJLUO</span></router-link>
         </div>
       </nav>
     </div>
