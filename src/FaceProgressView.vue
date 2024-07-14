@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container col-center">
         <div class="face2">
             <div class="face2-title">Verifikasi Diri</div>
             <div class="face2icon">
@@ -23,7 +23,6 @@ export default {
 </script>
 <style>
 .face2 {
-    margin-top: 3rem;
     text-align: center;
 }
 

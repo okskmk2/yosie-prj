@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container col-center">
         <div class="top">
             <div class="greeting-name">Hai Yosie !</div>
             <div class="avatar">
@@ -34,7 +34,6 @@
 </template>
 <style scoped>
 .top {
-    margin-top: 4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,7 +74,6 @@
     margin-top: 86px;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 5rem;
 }
 
 .bottom-item {

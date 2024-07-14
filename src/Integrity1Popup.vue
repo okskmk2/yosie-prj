@@ -1,10 +1,15 @@
 <template>
     <div class="modal-overlay">
         <section class="modal-yellow">
-            <div>Integritas Ujian</div>
-            <div>Universitas Terbuka UORB</div>
-            <div>
-                <div>Dengan ini saya menyatakan :</div>
+            <div class="integ-modal-header">
+                <img src="./assets/integritas1.png" alt="">
+                <div>
+                    <div class="integ-modal-title">Integritas Ujian</div>
+                    <div class="integ-modal-subtitle">Universitas Terbuka UORB</div>
+                </div>
+            </div>
+            <div class="integ-body">
+                <div class="integ-body-title">Dengan ini saya menyatakan :</div>
                 <p>
                     Berjanji untuk Mengerjakan materi Online Test ini secara bersungguh-sungguh, cermat, dan jujur,
                     serta tidak akan:
@@ -21,9 +26,9 @@
                     jawab, tanpa adanya paksaan dari pihak manapun.
 
                 </p>
-            </div>
-            <div>
-                <button @click="$emit('integrity1')">submit</button>
+                <div class="actions">
+                    <button class="integ-btn" @click="$emit('integrity1')">submit</button>
+                </div>
             </div>
         </section>
     </div>

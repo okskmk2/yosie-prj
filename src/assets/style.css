@@ -33,6 +33,15 @@ nav a {
     margin: 0 auto;
 }
 
+.col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+}
+
 .modal-overlay {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -49,6 +58,60 @@ nav a {
 
 .modal-yellow {
     background-color: #FFFCF4;
-    padding: 50px 100px;
-    width: 700px;
+    width: 48rem;
+    border-radius: 30px;
+}
+
+.integ-modal-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #3F3535;
+    padding-bottom: 25px;
+    padding-top: 30px;
+}
+
+.integ-modal-title {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.integ-modal-subtitle {
+    font-size: 17px;
+    color: #5A5555;
+    line-height: 1;
+}
+
+.integ-body {
+    padding: 3rem 5rem;
+
+    p {
+        font-size: 17px;
+        color: #5A5555;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    p.ml {
+        margin-left: 36px;
+    }
+
+    .actions {
+        text-align: right;
+    }
+}
+
+.integ-body-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.integ-btn {
+    background-color: #1976D2;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 25px;
+    padding: 12px 42px;
+    border-style: none;
 }

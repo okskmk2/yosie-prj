@@ -44,6 +44,7 @@
     padding: 3rem;
     border-radius: 15px;
     box-shadow: 0px 0px 4px 2px #eee;
+    width: 30rem;
 }
 
 .login-title {
@@ -56,7 +57,8 @@
     background-color: #E3F2FD;
     display: flex;
     border-radius: 28px;
-    width: 25rem;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0.5rem 24px;
 
     .label {

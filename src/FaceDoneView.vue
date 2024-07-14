@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container col-center">
         <div class="facedone">
             <div class="rel">
                 <div class="avatar">
@@ -14,7 +14,7 @@
         </div>
         <Teleport to="body">
             <Integrity1Popup v-if="open1" @integrity1="integrity1"></Integrity1Popup>
-            <Integrity2Popup v-if="open2"></Integrity2Popup>
+            <Integrity2Popup v-if="open2" @integrity2="integrity2"></Integrity2Popup>
         </Teleport>
     </div>
 </template>
@@ -35,6 +35,10 @@ export default {
         integrity1() {
             this.open1 = false;
             this.open2 = true;
+        },
+        integrity2() {
+            this.open2 = false;
+            this.$router.push('/ujian-lobby');
         }
     },
     mounted() {
@@ -46,9 +50,7 @@ export default {
 </script>
 <style scoped>
 .facedone {
-    margin-top: 6rem;
     text-align: center;
-    margin-bottom: 6rem;
 }
 
 .avatar {
