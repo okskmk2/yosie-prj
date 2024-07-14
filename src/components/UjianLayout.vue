@@ -35,6 +35,8 @@ export default {
 
 .ujianbg {
     background-image: url('../assets/ujianbg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .uout {

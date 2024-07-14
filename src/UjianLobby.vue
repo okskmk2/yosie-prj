@@ -2,7 +2,7 @@
     <div class="ujian-lobby">
         <div class="ujian-lobby-title">UJIAN ONLINE</div>
         <div class="ujian-choice">
-            <div class="ujian-item" style="background-color: #D8E8FF;">
+            <div class="ujian-item" style="background-color: #D8E8FF;" @click="$router.push('/ujian')">
                 <div style="background-color: #2196F3;" class="ujian-img">
                     <img src="./assets/ujian1.svg" alt="">
                 </div>

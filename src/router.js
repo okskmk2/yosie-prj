@@ -40,7 +40,7 @@ const routes = [
         ],
     },
     {
-        path: '/ujian-main',
+        path: '/ujian',
         component: Ujian
     },
 
