@@ -2,6 +2,15 @@
 
 :root {
     background-color: #FFFCF4;
+
+}
+
+/* font-family */
+body,
+button,
+select,
+textarea,
+pre {
     font-family: "Poppins", sans-serif;
     color: #171100;
 }
@@ -18,7 +27,7 @@ nav a {
 /* utils */
 
 .container {
-    width: 80rem;
+    min-width: 80rem;
     box-sizing: border-box;
     padding: 1rem;
     margin: 0 auto;
