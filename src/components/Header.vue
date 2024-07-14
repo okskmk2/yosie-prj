@@ -30,7 +30,7 @@
 
 .header-brand {
   display: flex;
-  gap: 30px;
+  gap: 9px;
 }
 
 .brandname {

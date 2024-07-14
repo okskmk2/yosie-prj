@@ -69,11 +69,15 @@
     gap: 14px;
     border-radius: 30px;
 }
+.mulai-verifikasi-diri:hover {
+    background-color: #bbe2ff;
+}
 
 .bottom {
     margin-top: 86px;
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 
 .bottom-item {

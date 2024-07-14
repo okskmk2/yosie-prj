@@ -24,6 +24,10 @@ nav a {
     color: inherit;
 }
 
+button {
+    cursor: pointer;
+}
+
 /* utils */
 
 .container {
@@ -114,4 +118,8 @@ nav a {
     border-radius: 25px;
     padding: 12px 42px;
     border-style: none;
+}
+
+.integ-btn:hover {
+    background-color: #308ce8;
 }

@@ -86,5 +86,12 @@
     flex-direction: column;
     align-items: center;
     border-radius: 15px;
+    transition: box-shadow 200ms ease-in;
+    cursor: pointer;
+}
+
+.ujian-item:hover {
+    /* transform: scale(1.01); */
+    box-shadow: 0 0 8px 2px #555;
 }
 </style>

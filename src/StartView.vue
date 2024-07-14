@@ -62,7 +62,8 @@
     padding: 0.5rem 24px;
 
     .label {
-        color: #666;
+        color: #808080;
+        font-size: 14px;
     }
 
     input {
@@ -94,5 +95,9 @@
     border-style: none;
     box-sizing: border-box;
     background-color: #00B2FF;
+}
+
+.login-btn:hover {
+    background-color: #22bdff;
 }
 </style>

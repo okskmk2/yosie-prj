@@ -41,9 +41,12 @@ export default {
 
 .uout {
     margin: 1rem 1rem 0;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
 }
 
 .ujian-header {
@@ -56,10 +59,12 @@ export default {
 .ujian-bg-title {
     font-size: 50px;
     font-weight: 600;
+    text-shadow: 0 0 2px black;
 }
 
 .ujian-bg-subtitle {
     font-size: 35px;
     line-height: 1;
+    text-shadow: 0 0 2px black;
 }
 </style>
