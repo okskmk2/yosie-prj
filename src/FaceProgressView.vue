@@ -12,6 +12,15 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    mounted() {
+        setTimeout(() => {
+            this.$router.push('/face3')
+        }, 3000);
+    }
+}
+</script>
 <style>
 .face2 {
     margin-top: 3rem;

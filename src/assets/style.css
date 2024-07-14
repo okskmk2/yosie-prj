@@ -27,8 +27,28 @@ nav a {
 /* utils */
 
 .container {
-    min-width: 80rem;
+    width: 80rem;
     box-sizing: border-box;
     padding: 1rem;
     margin: 0 auto;
+}
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-yellow {
+    background-color: #FFFCF4;
+    padding: 50px 100px;
+    width: 700px;
 }

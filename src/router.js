@@ -5,6 +5,7 @@ import StartView from './StartView.vue'
 import ExamLobbyView from './ExamLobbyView.vue'
 import FaceRecognitionView from './FaceRecognitionView.vue'
 import FaceProgressView from './FaceProgressView.vue'
+import FaceDoneView from './FaceDoneView.vue'
 
 const routes = [
     {
@@ -20,6 +21,10 @@ const routes = [
             {
                 path: '/face2',
                 component: FaceProgressView
+            },
+            {
+                path: '/face3',
+                component: FaceDoneView
             }
         ],
     },
