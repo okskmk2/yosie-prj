@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="./assets/ujianface.png" alt="" style="margin-left: 3rem;" @click="open2 = true">
+                        <video ref="video" width="250" autoplay style="margin-left: 3rem;border-radius: 16px;"></video>
                     </div>
                 </section>
                 <section class="body rest">
@@ -198,6 +198,23 @@ export default {
             if (document.visibilityState === 'hidden') {
                 this.redpopup = true;
             }
+        },
+        getSettingUrl() {
+            let settingsUrl;
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.includes('chrome')) {
+                settingsUrl = 'chrome://settings/content/camera';
+            } else if (userAgent.includes('firefox')) {
+                settingsUrl = 'about:preferences#privacy';
+            } else if (userAgent.includes('safari')) {
+                settingsUrl = 'x-apple.systempreferences:com.apple.preference.security?Privacy_Camera';
+            } else if (userAgent.includes('edge')) {
+                settingsUrl = 'edge://settings/content/camera';
+            } else {
+                // alert('브라우저 설정에서 권한을 재설정해주세요.');
+                return;
+            }
+            return settingsUrl;
         }
     },
     mounted() {
@@ -205,9 +222,36 @@ export default {
             this.updateElapsedTime();
         }, 1000);
         document.addEventListener('visibilitychange', this.detectTab);
+
+        const constraints = {
+            video: true // 오디오를 포함하고 싶다면, { video: true, audio: true }로 설정
+        };
+
+        // 사용자의 미디어 장치에 접근합니다.
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then((stream) => {
+                // 스트림을 비디오 요소에 설정합니다.
+                this.$refs.video.srcObject = stream;
+            })
+            .catch((error) => {
+                if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+                    alert('Please go to \n' + this.getSettingUrl() + '\nfor set camera access');
+                } else if (error.name === 'NotFoundError') {
+                    alert('No camera Error');
+                } else {
+                    console.log('카메라 권한 확인 중 오류가 발생했습니다:', error);
+                }
+                this.$router.push('/');
+            });
+        setTimeout(() => {
+            this.open2 = true;
+        }, 10 * 1000);
     },
     unmounted() {
         document.removeEventListener('visibilitychange', this.detectTab);
+        this.$refs.video.pause();
+        this.$refs.video.removeAttribute('src'); // empty source
+        this.$refs.video.load();
     }
 }
 </script>
