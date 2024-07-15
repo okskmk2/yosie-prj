@@ -4,44 +4,143 @@
             <div class="ujian-board">
                 <section class="header">
                     <div class="header-top">
-                        <div>
-                            <div>
+                        <div class="panel">
+                            <div class="panel-row">
                                 <img src="./assets/ujianlogo.png" alt="" class="ujian-brand">
-                                <div>
+                                <div class="text-center">
                                     <div class="bold-blue">012345678</div>
                                     <div class="gray">Ujian Online</div>
                                 </div>
-                                <div>
+                                <div class="text-center">
                                     <div class="bold-blue">DEMO000002</div>
                                     <div class="gray">Mata Kuliah Simulasi</div>
                                 </div>
-                                <div>
+                                <div class="text-center">
                                     <div class="bold-blue">2 July 2024</div>
                                     <div class="gray">Sesi 1</div>
                                 </div>
                             </div>
-                            <div>
-                                <div>Menjawab 2 dari 30</div>
-                                <div class="skyblue">JAWABAN</div>
+                            <div class="panel-row" style="align-items: flex-end;">
                                 <div>
-                                    <div>A</div>
-                                    <div>B</div>
-                                    <div>C</div>
-                                    <div>D</div>
+                                    <div
+                                        style="margin-left: 16px;margin-bottom: 8px; font-size: 20px;font-weight: 500;">
+                                        Menjawab <span style="color:red">2</span>
+                                        dari <span style="color:blue">30</span>
+                                    </div>
+                                    <div style="padding-left: 38px;font-size: 15px;">NO<span
+                                            style="margin-left: 17px;">JAWABAN</span>
+                                    </div>
                                 </div>
-                                <div>
+                                <div class="row-center" style="margin-bottom: 1rem;">
+                                    <span class="skyblue">JAWABAN</span>
+                                    <span class="jawaban">
+                                        <span class="jawaban-item">A</span>
+                                        <span class="jawaban-item">B</span>
+                                        <span class="jawaban-item">C</span>
+                                        <span class="jawaban-item">D</span>
+                                    </span>
+                                </div>
+                                <div class="text-center">
                                     <div class="bold-blue">Sisa Waktu</div>
-                                    <div class="skyblue">1 : 28 : 35</div>
+                                    <div class="skyblue" style="width: 200px;font-family: monospace;">{{ passtime }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <img src="./assets/ujianface.png" alt="">
-                    </div>
-                    <div class="header-bottom">
-                        <div>NO JAWABAN</div>
+                        <img src="./assets/ujianface.png" alt="" style="margin-left: 3rem;">
                     </div>
                 </section>
-                <section class="body"></section>
+                <section class="body rest">
+                    <div class="row">
+                        <table class="answer-table ybg">
+                            <tr>
+                                <td>1</td>
+                                <td>A</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>B</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>-</td>
+                            </tr>
+                        </table>
+                        <div class="rest">
+                            <div class="row content-header">
+                                <div>
+                                    <div>
+                                        No <span style="color:red;margin-right: 8px;">2</span>
+                                        DARI <span style="color:blue">30</span>
+                                    </div>
+                                </div>
+                                <div style="color:#214395">
+                                    Halaman 2 / 30
+                                </div>
+                                <div class="row" style="gap: 17px;">
+                                    <span class="row-center">Kamus <img src="./assets/kamusicon.svg" alt=""
+                                            class="kimg"></span>
+                                    <span class="row-center">Tabel <img src="./assets/tabelicon.svg" alt=""
+                                            class="kimg"></span>
+                                </div>
+                                <div class='row-center'>
+                                    <img src="./assets/zoomin.png" alt="">
+                                    <span>135 %</span>
+                                    <img src="./assets/zoomout.png" alt="">
+                                </div>
+                            </div>
+                            <div class="ybg ujian-content">
+                                <div style="display: flex;">
+                                    <div style="width: 3rem;">3.</div>
+                                    <div>
+
+                                        Prinsip hukum yang menekankan bahwa<br>
+                                        kasus-kasus yang serupa harus diperlakukan secara<br>
+                                        sama di bawah hukum adalah...
+                                    </div>
+                                </div>
+                                <div style="margin-top: 50px; line-height: 2;margin-left: 3rem;">
+                                    A. Asas Legalitas<br>
+                                    B. Asas Keadilan<br>
+                                    C. Perlindungan Hukum<br>
+                                    D. Asas Persamaan
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
         <Footer />
@@ -52,12 +151,85 @@ import Footer from "./components/Footer.vue";
 export default {
     components: {
         Footer
+    },
+    data() {
+        return {
+            passtime: null,
+            startTime: Date.now()
+        }
+    },
+    methods: {
+        formatTime(ms) {
+            let totalSeconds = Math.floor(ms / 1000);
+            let hours = Math.floor(totalSeconds / 3600);
+            let minutes = Math.floor((totalSeconds % 3600) / 60);
+            let seconds = totalSeconds % 60;
+
+            // Pad with leading zeros if needed
+            hours = String(hours).padStart(2, '0');
+            minutes = String(minutes).padStart(2, '0');
+            seconds = String(seconds).padStart(2, '0');
+
+            return `${hours}:${minutes}:${seconds}`;
+        },
+
+        updateElapsedTime() {
+            let currentTime = Date.now();
+            let elapsedTime = currentTime - this.startTime;
+            this.passtime = this.formatTime(elapsedTime);
+        }
+    },
+    mounted() {
+        setInterval(() => {
+            this.updateElapsedTime();
+        }, 1000);
     }
 }
 </script>
 <style scoped>
+.content-header {
+    justify-content: space-around;
+    align-items: center;
+    font-size: 20px;
+}
+
+.ujian-content {
+    padding: 100px;
+    height: calc(100% - 45px);
+    box-sizing: border-box;
+    font-size: 30px;
+    color: #333;
+}
+
+.kimg {
+    margin-left: 6px;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.ybg {
+    background-color: #FFFCF4;
+}
+
+.answer-table {
+    border-right: 1px solid #ddd;
+
+    td {
+        padding: 20px 27px;
+        font-size: 23px;
+        font-weight: 600;
+        text-align: right;
+        font-family: monospace;
+    }
+}
+
 .header {
     background-color: #D8E8FF;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .ujian-brand {
@@ -72,6 +244,7 @@ export default {
 }
 
 .ujian-board {
+    overflow: hidden;
     border-radius: 15px;
     background-color: #f2f2f2;
 }
@@ -79,6 +252,19 @@ export default {
 .header-top {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 2rem;
+    padding-right: 2rem;
+}
+
+.panel {
+    flex-grow: 1;
+}
+
+.panel-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .bold-blue {
@@ -94,7 +280,29 @@ export default {
 
 .skyblue {
     color: #2196F3;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: 500;
+}
+
+.jawaban {
+    margin-left: 30px;
+    background-color: white;
+    box-shadow: 0 0 4px 1px #ccc;
+    font-size: 30px;
+    font-weight: 500;
+    padding: 0 12px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.jawaban-item {
+    display: inline-block;
+    padding: 4px 16px;
+}
+
+.jawaban-item:hover {
+    background-color: #2196F3;
+    color: white;
+    cursor: pointer;
 }
 </style>
