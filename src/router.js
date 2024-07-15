@@ -9,6 +9,7 @@ import UjianLayout from "./components/UjianLayout.vue";
 import UjianLobby from './UjianLobby.vue'
 import PJLUOLogin from './PJLUOLogin.vue'
 import Ujian from './Ujian.vue'
+import Tataterib from './Tataterib.vue'
 
 const routes = [
     {
@@ -17,6 +18,7 @@ const routes = [
         children: [
             { path: '', component: HomeView },
             { path: 'start', component: StartView },
+            { path: 'tata-terib', component: Tataterib },
             {
                 path: 'face1',
                 component: FaceRecognitionView

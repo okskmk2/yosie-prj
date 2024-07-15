@@ -2,16 +2,18 @@
     <div class="container col-center">
         <div class="facedone">
             <div class="rel">
+                <CircularProgressBar></CircularProgressBar>
                 <div class="avatar">
                     <img src="./assets/yosie.png" alt="">
                 </div>
-                <img src="./assets/doneicon.svg" alt="" class="doneicon">
+                <img src="./assets/doneicon.svg" alt="" class="doneicon" v-if="doneicon">
             </div>
             <div class="face3-text">
                 <div class="face3-text1">Verifikasi Sukses</div>
                 <div class="face3-text2">anda akan di arahkan ke laman ujian</div>
             </div>
         </div>
+
         <Teleport to="body">
             <Integrity1Popup v-if="open1" @integrity1="integrity1"></Integrity1Popup>
             <Integrity2Popup v-if="open2" @integrity2="integrity2"></Integrity2Popup>
@@ -19,16 +21,18 @@
     </div>
 </template>
 <script>
+import CircularProgressBar from "./components/CircularProgressBar.vue";
 import Integrity1Popup from "./Integrity1Popup.vue";
 import Integrity2Popup from "./Integrity2Popup.vue";
 export default {
     components: {
-        Integrity1Popup, Integrity2Popup
+        Integrity1Popup, Integrity2Popup, CircularProgressBar
     },
     data() {
         return {
             open1: false,
             open2: false,
+            doneicon: false
         }
     },
     methods: {
@@ -43,12 +47,20 @@ export default {
     },
     mounted() {
         setTimeout(() => {
+            this.doneicon = true;
+        }, 1380);
+        setTimeout(() => {
             this.open1 = true;
-        }, 2000);
+        }, 2400);
     }
 }
 </script>
 <style scoped>
+svg {
+    position: absolute;
+    z-index: 10;
+}
+
 .facedone {
     text-align: center;
 }
@@ -76,6 +88,7 @@ export default {
     position: absolute;
     right: -7px;
     bottom: -7px;
+    z-index: 100;
 }
 
 .face3-text {

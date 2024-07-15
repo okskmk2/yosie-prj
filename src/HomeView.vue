@@ -10,7 +10,7 @@
                 </div>
                 <div class="btns">
                     <button class="btn mulai" @click="$router.push('/start')">Mulai</button>
-                    <button class="btn tata">Tata tertib</button>
+                    <button class="btn tata" @click="$router.push('/tata-terib')">Tata tertib</button>
                 </div>
             </div>
             <div>

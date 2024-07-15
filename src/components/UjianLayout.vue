@@ -5,7 +5,7 @@
             <span>UO - UT</span>
         </div>
         <div class="ujian-header">
-            <img src="../assets/ujianlogo.png" alt="" style="width: 150px;">
+            <img src="../assets/ujianlogo.png" alt="" style="width: 150px;" @click="$router.push('/')">
             <div class="ujian-bg-title">Universitas Terbuka</div>
             <div class="ujian-bg-subtitle">Making Higher Education Open to All</div>
         </div>

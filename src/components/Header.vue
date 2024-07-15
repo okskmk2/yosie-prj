@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="header-inner">
-      <div class="header-brand">
+      <div class="header-brand" @click="$router.push('/')">
         <img src="../assets/headerlogo.png" alt="">
         <div>
           <div class="brandname">Universitas Terbuka</div>
@@ -31,6 +31,7 @@
 .header-brand {
   display: flex;
   gap: 9px;
+  cursor: pointer;
 }
 
 .brandname {
