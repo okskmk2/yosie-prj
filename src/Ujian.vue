@@ -28,7 +28,7 @@
                                         dari <span style="color:blue">30</span>
                                     </div>
                                     <div style="padding-left: 38px;font-size: 15px;">NO<span
-                                            style="margin-left: 17px;">JAWABAN</span>
+                                            style="margin-left: 22px;">JAWABAN</span>
                                     </div>
                                 </div>
                                 <div class="row-center" style="margin-bottom: 1rem;">
@@ -40,14 +40,15 @@
                                         <span class="jawaban-item">D</span>
                                     </span>
                                 </div>
-                                <div class="text-center">
+                                <div class="text-center" style="padding-bottom: 12px;">
                                     <div class="bold-blue">Sisa Waktu</div>
-                                    <div class="skyblue" style="width: 200px;font-family: monospace;">{{ passtime }}
+                                    <div class="skyblue" style="width: 200px;height: 41px; font-family: monospace;">{{
+                                        passtime }}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <img src="./assets/ujianface.png" alt="" style="margin-left: 3rem;">
+                        <img src="./assets/ujianface.png" alt="" style="margin-left: 3rem;" @click="open2 = true">
                     </div>
                 </section>
                 <section class="body rest">
@@ -144,21 +145,35 @@
             </div>
         </div>
         <Footer />
+        <Teleport to="body">
+            <OthertabOpenPopup @closeredpop1="closeredpop1" v-if="redpopup" />
+            <CameraRedPopup @closeredpop2="closeredpop2" v-if="open2" />
+        </Teleport>
     </div>
 </template>
 <script>
 import Footer from "./components/Footer.vue";
+import OthertabOpenPopup from "./OthertabOpenPopup.vue";
+import CameraRedPopup from "./CameraRedPopup.vue";
 export default {
     components: {
-        Footer
+        Footer, OthertabOpenPopup, CameraRedPopup
     },
     data() {
         return {
             passtime: null,
-            startTime: Date.now()
+            startTime: Date.now(),
+            redpopup: false,
+            open2: false
         }
     },
     methods: {
+        closeredpop2() {
+            this.open2 = false;
+        },
+        closeredpop1() {
+            this.redpopup = false;
+        },
         formatTime(ms) {
             let totalSeconds = Math.floor(ms / 1000);
             let hours = Math.floor(totalSeconds / 3600);
@@ -177,12 +192,22 @@ export default {
             let currentTime = Date.now();
             let elapsedTime = currentTime - this.startTime;
             this.passtime = this.formatTime(elapsedTime);
+        },
+
+        detectTab() {
+            if (document.visibilityState === 'hidden') {
+                this.redpopup = true;
+            }
         }
     },
     mounted() {
         setInterval(() => {
             this.updateElapsedTime();
         }, 1000);
+        document.addEventListener('visibilitychange', this.detectTab);
+    },
+    unmounted() {
+        document.removeEventListener('visibilitychange', this.detectTab);
     }
 }
 </script>

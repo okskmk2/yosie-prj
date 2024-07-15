@@ -138,3 +138,52 @@ button {
 .integ-btn:hover {
     background-color: #308ce8;
 }
+
+.modal-red {
+    background-color: #FFFCF4;
+    width: 48rem;
+    border-radius: 30px;
+    overflow: hidden;
+
+    .red-title {
+        background-color: #DF5757;
+        color: white;
+        font-size: 25px;
+        font-weight: 600;
+        padding: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .red-body {
+        padding: 40px 80px;
+    }
+
+    .red-btns {
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    .red-btn {
+        background-color: #DF5757;
+        color: white;
+        font-size: 20px;
+        padding: 10px 25px;
+        border-radius: 30px;
+        border-style: none;
+    }
+
+    .red-body-point {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .red-body-text {
+        margin-top: 30px;
+        font-size: 17px;
+        color: #5A5555;
+        line-height: 2;
+    }
+}
