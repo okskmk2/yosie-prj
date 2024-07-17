@@ -22,7 +22,7 @@
                 <a>Lupa password?</a>
             </div>
             <div class="btns">
-                <button class="login-btn" @click="$router.push('/face1')">MASUK</button>
+                <button class="login-btn" @click="$router.push('/exam-monitoring')">MASUK</button>
             </div>
         </div>
     </div>

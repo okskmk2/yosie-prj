@@ -10,6 +10,7 @@ import UjianLobby from './UjianLobby.vue'
 import PJLUOLogin from './PJLUOLogin.vue'
 import Ujian from './Ujian.vue'
 import Tataterib from './Tataterib.vue'
+import ExamMonitoring from './ExamMonitoring.vue'
 
 const routes = [
     {
@@ -44,6 +45,10 @@ const routes = [
     {
         path: '/ujian',
         component: Ujian
+    },
+    {
+        path: '/exam-monitoring',
+        component: ExamMonitoring
     },
 
 ]
