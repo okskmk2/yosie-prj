@@ -33,6 +33,12 @@ export default {
             exam1: true,
             exam2: true
         }
+    },
+    mounted() {
+        setInterval(() => {
+            this.exam1 = !this.exam1;
+            this.exam2 = !this.exam2;
+        }, 5000);
     }
 }
 </script>
