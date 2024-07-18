@@ -48,7 +48,8 @@ export default {
             }, 100);
         },
         async start() {
-            await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
+            let baseurl = process.env.NODE_ENV === 'production' ? '/yosie' : '';
+            await faceapi.nets.tinyFaceDetector.loadFromUri(baseurl + '/models');
 
             const video = await this.setupCamera();
             const canvas = this.$refs.canvas;
