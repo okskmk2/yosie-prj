@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="row-center" style="margin-bottom: 1rem;">
                                     <span class="skyblue">JAWABAN</span>
-                                    <span class="jawaban">
+                                    <span class="jawaban" @click="openpopup3">
                                         <span class="jawaban-item">A</span>
                                         <span class="jawaban-item">B</span>
                                         <span class="jawaban-item">C</span>
@@ -48,7 +48,11 @@
                                 </div>
                             </div>
                         </div>
-                        <video ref="video" width="250" autoplay style="margin-left: 3rem;border-radius: 16px;"></video>
+                        <div>
+                            <FaceDetection width="250" height="178" style="margin-left: 3rem;border-radius: 16px;"></FaceDetection>
+                        </div>
+                        <!-- <video ref="video" width="250" autoplay style="margin-left: 3rem;border-radius: 16px;"
+                            @click="openpopup2"></video> -->
                     </div>
                 </section>
                 <section class="body rest">
@@ -148,6 +152,7 @@
         <Teleport to="body">
             <OthertabOpenPopup @closeredpop1="closeredpop1" v-if="redpopup" />
             <CameraRedPopup @closeredpop2="closeredpop2" v-if="open2" />
+            <SelasaiPopup v-if="open3" />
         </Teleport>
     </div>
 </template>
@@ -155,19 +160,30 @@
 import Footer from "./components/Footer.vue";
 import OthertabOpenPopup from "./OthertabOpenPopup.vue";
 import CameraRedPopup from "./CameraRedPopup.vue";
+import SelasaiPopup from "./SelasaiPopup.vue";
+import FaceDetection from './components/FaceDetection.vue'
+
 export default {
     components: {
-        Footer, OthertabOpenPopup, CameraRedPopup
+        Footer, OthertabOpenPopup, CameraRedPopup, SelasaiPopup, FaceDetection
     },
     data() {
         return {
             passtime: null,
             startTime: Date.now(),
             redpopup: false,
-            open2: false
+            open2: false,
+            open3: false,
         }
     },
     methods: {
+        openpopup3() {
+            this.open3 = true;
+        },
+        openpopup2() {
+            this.redpopup = false;
+            this.open2 = true;
+        },
         closeredpop2() {
             this.open2 = false;
         },
@@ -223,35 +239,32 @@ export default {
         }, 1000);
         document.addEventListener('visibilitychange', this.detectTab);
 
-        const constraints = {
-            video: true // 오디오를 포함하고 싶다면, { video: true, audio: true }로 설정
-        };
+        // const constraints = {
+        //     video: true // 오디오를 포함하고 싶다면, { video: true, audio: true }로 설정
+        // };
 
-        // 사용자의 미디어 장치에 접근합니다.
-        navigator.mediaDevices.getUserMedia(constraints)
-            .then((stream) => {
-                // 스트림을 비디오 요소에 설정합니다.
-                this.$refs.video.srcObject = stream;
-            })
-            .catch((error) => {
-                if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-                    alert('Please go to \n' + this.getSettingUrl() + '\nfor set camera access');
-                } else if (error.name === 'NotFoundError') {
-                    alert('No camera Error');
-                } else {
-                    console.log('카메라 권한 확인 중 오류가 발생했습니다:', error);
-                }
-                this.$router.push('/');
-            });
-        setTimeout(() => {
-            this.open2 = true;
-        }, 10 * 1000);
+        // // 사용자의 미디어 장치에 접근합니다.
+        // navigator.mediaDevices.getUserMedia(constraints)
+        //     .then((stream) => {
+        //         // 스트림을 비디오 요소에 설정합니다.
+        //         this.$refs.video.srcObject = stream;
+        //     })
+        //     .catch((error) => {
+        //         if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
+        //             alert('Please go to \n' + this.getSettingUrl() + '\nfor set camera access');
+        //         } else if (error.name === 'NotFoundError') {
+        //             alert('No camera Error');
+        //         } else {
+        //             console.log('카메라 권한 확인 중 오류가 발생했습니다:', error);
+        //         }
+        //         this.$router.push('/');
+        //     });
     },
     unmounted() {
         document.removeEventListener('visibilitychange', this.detectTab);
-        this.$refs.video.pause();
-        this.$refs.video.removeAttribute('src'); // empty source
-        this.$refs.video.load();
+        // this.$refs.video.pause();
+        // this.$refs.video.removeAttribute('src'); // empty source
+        // this.$refs.video.load();
     }
 }
 </script>
