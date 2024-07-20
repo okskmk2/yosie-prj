@@ -12,15 +12,20 @@ export default {
     name: 'FaceDetection',
     props: {
         width: {
-            type: Number,
+            type: String,
             required: true,
-            default: 720,
+            default: '720',
         },
         height: {
-            type: Number,
+            type: String,
             required: true,
-            default: 560,
+            default: '560',
         },
+    },
+    data() {
+        return {
+            detectInterval: 0
+        }
     },
     mounted() {
         this.start();
@@ -40,12 +45,12 @@ export default {
             const displaySize = { width: video.width, height: video.height };
             faceapi.matchDimensions(canvas, displaySize);
 
-            setInterval(async () => {
+            this.detectInterval = setInterval(async () => {
                 const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
                 const resizedDetections = faceapi.resizeResults(detections, displaySize);
                 canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
                 faceapi.draw.drawDetections(canvas, resizedDetections);
-            }, 100);
+            }, 220);
         },
         async start() {
             let baseurl = process.env.NODE_ENV === 'production' ? '/yosie' : '';
@@ -56,6 +61,12 @@ export default {
             this.detectFaces(video, canvas);
         },
     },
+    unmounted() {
+        clearInterval(this.detectInterval);
+        this.$refs.video.pause();
+        this.$refs.video.removeAttribute('src'); // empty source
+        this.$refs.video.load();
+    }
 };
 </script>
 

@@ -49,7 +49,8 @@
                             </div>
                         </div>
                         <div>
-                            <FaceDetection width="250" height="178" style="margin-left: 3rem;border-radius: 16px;"></FaceDetection>
+                            <FaceDetection width="250" height="178" style="margin-left: 3rem;border-radius: 16px;">
+                            </FaceDetection>
                         </div>
                         <!-- <video ref="video" width="250" autoplay style="margin-left: 3rem;border-radius: 16px;"
                             @click="openpopup2"></video> -->
@@ -152,7 +153,7 @@
         <Teleport to="body">
             <OthertabOpenPopup @closeredpop1="closeredpop1" v-if="redpopup" />
             <CameraRedPopup @closeredpop2="closeredpop2" v-if="open2" />
-            <SelasaiPopup v-if="open3" />
+            <SelasaiPopup @close3="closepop3" v-if="open3" />
         </Teleport>
     </div>
 </template>
@@ -177,6 +178,9 @@ export default {
         }
     },
     methods: {
+        closepop3() {
+            this.open3 = false
+        },
         openpopup3() {
             this.open3 = true;
         },

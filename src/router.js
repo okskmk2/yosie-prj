@@ -11,6 +11,7 @@ import PJLUOLogin from './PJLUOLogin.vue'
 import Ujian from './Ujian.vue'
 import Tataterib from './Tataterib.vue'
 import ExamMonitoring from './ExamMonitoring.vue'
+import Score from './Score.vue'
 
 const routes = [
     {
@@ -49,6 +50,10 @@ const routes = [
     {
         path: '/exam-monitoring',
         component: ExamMonitoring
+    },
+    {
+        path: '/score',
+        component: Score
     },
 
 ]
