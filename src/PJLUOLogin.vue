@@ -2,7 +2,7 @@
     <div class="pjluo">
         <div class="loginform no-shadow">
             <div class="login-title">
-                LOGIN PJLUO
+                LOGIN PETUGAS
             </div>
             <label class="login-input-row" style="margin-top: 44px;">
                 <img src="./assets/accounticon.svg" alt="">
