@@ -24,7 +24,8 @@ export default {
     },
     data() {
         return {
-            detectInterval: 0
+            detectInterval: 0,
+            stream: null
         }
     },
     mounted() {
@@ -33,8 +34,8 @@ export default {
     methods: {
         async setupCamera() {
             const video = this.$refs.video;
-            const stream = await navigator.mediaDevices.getUserMedia({ video: {} });
-            video.srcObject = stream;
+            this.stream = await navigator.mediaDevices.getUserMedia({ video: {} });
+            video.srcObject = this.stream;
             return new Promise((resolve) => {
                 video.onloadedmetadata = () => {
                     resolve(video);
@@ -60,13 +61,19 @@ export default {
             const canvas = this.$refs.canvas;
             this.detectFaces(video, canvas);
         },
+        stopBothVideoAndAudio(stream) {
+            stream.getTracks().forEach((track) => {
+                if (track.readyState == 'live') {
+                    track.stop();
+                }
+            });
+        }
     },
     unmounted() {
         clearInterval(this.detectInterval);
-        this.$refs.video.pause();
-        this.$refs.video.removeAttribute('src'); // empty source
-        this.$refs.video.load();
+        this.stopBothVideoAndAudio(this.stream);
     }
+
 };
 </script>
 

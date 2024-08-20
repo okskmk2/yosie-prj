@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div>
-                            <FaceDetection width="250" height="178" style="margin-left: 3rem;border-radius: 16px;">
+                            <FaceDetection width="250" height="178" style="margin-left: 3rem;border-radius: 16px;" @click="openpopup2">
                             </FaceDetection>
                         </div>
                         <!-- <video ref="video" width="250" autoplay style="margin-left: 3rem;border-radius: 16px;"
