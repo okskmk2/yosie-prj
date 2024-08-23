@@ -172,7 +172,7 @@ export default {
     data() {
         return {
             passtime: null,
-            startTime: Date.now(),
+            endTime: null,
             redpopup: false,
             open2: false,
             open3: false,
@@ -180,7 +180,7 @@ export default {
     },
     methods: {
         closepop3() {
-            this.open3 = false
+            this.open3 = false;
         },
         openpopup3() {
             this.open3 = true;
@@ -198,24 +198,27 @@ export default {
         },
         formatTime(ms) {
             let totalSeconds = Math.floor(ms / 1000);
-            let hours = Math.floor(totalSeconds / 3600);
-            let minutes = Math.floor((totalSeconds % 3600) / 60);
+            let minutes = Math.floor(totalSeconds / 60);
             let seconds = totalSeconds % 60;
 
             // Pad with leading zeros if needed
-            hours = String(hours).padStart(2, '0');
             minutes = String(minutes).padStart(2, '0');
             seconds = String(seconds).padStart(2, '0');
 
-            return `${hours}:${minutes}:${seconds}`;
+            return `${minutes}:${seconds}`;
         },
-
-        updateElapsedTime() {
+        updateCountdown() {
             let currentTime = Date.now();
-            let elapsedTime = currentTime - this.startTime;
-            this.passtime = this.formatTime(elapsedTime);
-        },
+            let remainingTime = this.endTime - currentTime;
 
+            if (remainingTime >= 0) {
+                this.passtime = this.formatTime(remainingTime);
+            } else {
+                this.passtime = "00:00";
+                clearInterval(this.countdownInterval);
+                // 여기에서 시간이 끝났을 때 추가 작업을 수행할 수 있습니다.
+            }
+        },
         detectTab() {
             if (document.visibilityState === 'hidden') {
                 this.redpopup = true;
@@ -240,45 +243,23 @@ export default {
         }
     },
     mounted() {
-        setInterval(() => {
-            this.updateElapsedTime();
+        // 90분(5400000ms) 후에 카운트다운이 끝나도록 설정
+        this.endTime = Date.now() + 90 * 60 * 1000;
+
+        this.countdownInterval = setInterval(() => {
+            this.updateCountdown();
         }, 1000);
         document.addEventListener('visibilitychange', this.detectTab);
 
         setTimeout(() => {
-            if(!this.redpopup && !this.open2 && !this.open3){
+            if (!this.redpopup && !this.open2 && !this.open3) {
                 this.redpopup = true;
             }
         }, 10000);
-
-        // const constraints = {
-        //     video: true // 오디오를 포함하고 싶다면, { video: true, audio: true }로 설정
-        // };
-
-        // // 사용자의 미디어 장치에 접근합니다.
-        // navigator.mediaDevices.getUserMedia(constraints)
-        //     .then((stream) => {
-        //         // 스트림을 비디오 요소에 설정합니다.
-        //         this.$refs.video.srcObject = stream;
-        //     })
-        //     .catch((error) => {
-        //         if (error.name === 'NotAllowedError' || error.name === 'PermissionDeniedError') {
-        //             alert('Please go to \n' + this.getSettingUrl() + '\nfor set camera access');
-        //         } else if (error.name === 'NotFoundError') {
-        //             alert('No camera Error');
-        //         } else {
-        //             console.log('카메라 권한 확인 중 오류가 발생했습니다:', error);
-        //         }
-        //         this.$router.push('/');
-        //     });
     },
     unmounted() {
-        // detect open other tab
-        // document.removeEventListener('visibilitychange', this.detectTab);
-
-        // this.$refs.video.pause();
-        // this.$refs.video.removeAttribute('src'); // empty source
-        // this.$refs.video.load();
+        document.removeEventListener('visibilitychange', this.detectTab);
+        clearInterval(this.countdownInterval);
     }
 }
 </script>
