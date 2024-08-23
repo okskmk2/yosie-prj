@@ -49,7 +49,8 @@
                             </div>
                         </div>
                         <div>
-                            <FaceDetection width="250" height="178" style="margin-left: 3rem;border-radius: 16px;" @click="openpopup2">
+                            <FaceDetection width="250" height="178" style="margin-left: 3rem;border-radius: 16px;"
+                                @click="openpopup2">
                             </FaceDetection>
                         </div>
                         <!-- <video ref="video" width="250" autoplay style="margin-left: 3rem;border-radius: 16px;"
@@ -190,6 +191,7 @@ export default {
         },
         closeredpop2() {
             this.open2 = false;
+            this.openpopup3();
         },
         closeredpop1() {
             this.redpopup = false;
@@ -243,6 +245,12 @@ export default {
         }, 1000);
         document.addEventListener('visibilitychange', this.detectTab);
 
+        setTimeout(() => {
+            if(!this.redpopup && !this.open2 && !this.open3){
+                this.redpopup = true;
+            }
+        }, 10000);
+
         // const constraints = {
         //     video: true // 오디오를 포함하고 싶다면, { video: true, audio: true }로 설정
         // };
@@ -265,7 +273,9 @@ export default {
         //     });
     },
     unmounted() {
-        document.removeEventListener('visibilitychange', this.detectTab);
+        // detect open other tab
+        // document.removeEventListener('visibilitychange', this.detectTab);
+
         // this.$refs.video.pause();
         // this.$refs.video.removeAttribute('src'); // empty source
         // this.$refs.video.load();

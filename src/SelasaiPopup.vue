@@ -1,10 +1,10 @@
 <template>
     <div class="modal-overlay">
         <div class="modal-n">
-            <div class="modal-n-text">Apakah anda ingin menyatakan sudah selesai ujian ?</div>
+            <div class="modal-n-text">Ujian dihentikan karna terlalu banyak melakukan pelanggaran</div>
             <div class="modal-n-btns">
-                <button class="selasai-tidak-btn" @click="$emit('close3')">TIDAK SAYA INGIN LANJUT !</button>
-                <button class="selasai-sudah-btn" @click="$router.push('/score')">IYA SAYA SUDAH SELESAI</button>
+                <!-- <button class="selasai-tidak-btn" @click="$emit('close3')">TIDAK SAYA INGIN LANJUT !</button> -->
+                <button class="selasai-sudah-btn" @click="$router.push('/score')">SELESAI</button>
             </div>
         </div>
     </div>
@@ -24,6 +24,7 @@
     margin-top: 2rem;
     display: flex;
     gap: 1rem;
+    justify-content: flex-end;
 }
 
 .selasai-tidak-btn,
